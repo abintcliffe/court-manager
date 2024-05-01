@@ -1,0 +1,21 @@
+<div class="container drag-drop-container" [id]="id">
+  <mat-list
+    class="drag-drop-list"
+    [ngClass]="{ 'drag-drop-list__fixed': fixed }"
+  >
+    <mat-list-item
+      *ngFor="let item of list; let i = index"
+      class="drag-drop-item"
+      [ngClass]="{ active: item.active, disabled: i > 5 && isSelectable }"
+      (click)="toggleActive(i)"
+      ><div class="drag-drop-item-content">
+        <p>{{ item.name }}</p>
+        <div *ngIf="displayButtons" class="drag-drop-item-buttons">
+          <button mat-fab color="accent" (click)="emitButtonClick(item.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

@@ -1,0 +1,9 @@
+<div
+    class="box box--{{ member.level }}"
+    *ngFor="let member of boxItems"
+    [cdkDragData]="member"
+    (cdkDragMoved)="dragMoved($event)"
+    cdkDrag
+>
+    <span class="box__label">{{ member.name }}</span>
+</div>

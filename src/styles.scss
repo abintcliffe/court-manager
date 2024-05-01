@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-quartz.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+h1,
+h2 {
+  margin: 10px 0px;
+  padding: 0px;
+}
+
+.tab-group {
+  margin-top: 15px;
+}
+
+.dialog-container {
+  padding: 20px 10px;
+  width: 500px;
+
+  & .header {
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h2 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  margin: 0;
+}

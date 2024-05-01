@@ -1,0 +1,50 @@
+.drag-drop {
+  &-container {
+    margin-top: 30px;
+    overflow: auto;
+    height: 500px;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    &__fixed {
+      position: fixed;
+      top: 170px;
+      bottom: 30px;
+      width: 600px;
+      margin: auto;
+    }
+  }
+
+  &-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: #3f51b5;
+
+    &-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &-buttons {
+      margin-left: auto;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &.active {
+      background-color: #ff4081;
+    }
+
+    &.disabled {
+      background-color: grey;
+    }
+  }
+}

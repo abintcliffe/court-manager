@@ -1,0 +1,62 @@
+<div class="main">
+  <mat-tab-group class="tab-group" #menuTabs>
+    <mat-tab label="Board">
+      <div class="tab-container">
+        <div class="button-group">
+          <button mat-flat-button color="primary" (click)="addMembersToCourt()">
+            <mat-icon>add_box</mat-icon> Start Game
+          </button>
+          <button mat-flat-button color="primary" (click)="randomisePick()">
+            <mat-icon>add_box</mat-icon> Random Pick
+          </button>
+          <button mat-flat-button color="primary" (click)="openMemberDialog()">
+            <mat-icon>add_box</mat-icon> Members
+          </button>
+        </div>
+        <app-drag-drop
+          #boardMembers
+          [title]="'Members'"
+          [list]="unavailableMembers"
+          [activeLimit]="activeMemberLimit"
+          [isSelectable]="true"
+          [fixed]="true"
+        ></app-drag-drop>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Courts">
+      <div class="tab-container">
+        <button mat-flat-button color="primary" (click)="addCourt()">
+          <mat-icon>add_box</mat-icon> Add Court
+        </button>
+        <button mat-flat-button color="primary" (click)="removeCourt()">
+          <mat-icon>add_box</mat-icon> Remove Court
+        </button>
+        <mat-tab-group class="tab-group" #courtTabs>
+          <mat-tab
+            *ngFor="let court of courts; let i = index"
+            label="Court {{ i + 1 }}"
+          >
+            <div class="tab-container" *ngIf="court.members.length > 0">
+              <button
+                mat-flat-button
+                color="primary"
+                (click)="removeMemebersFromCourt(i)"
+                [disabled]="!hasWinners(i)"
+              >
+                <mat-icon>add_box</mat-icon> End Game
+              </button>
+              <span *ngIf="!hasWinners(i)">Please Select Winners</span>
+              <app-drag-drop
+                [title]="'Members'"
+                [list]="court.members"
+                [activeLimit]="2"
+                [isSelectable]="true"
+              ></app-drag-drop>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
